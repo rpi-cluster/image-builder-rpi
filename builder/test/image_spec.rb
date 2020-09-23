@@ -9,9 +9,9 @@ describe "SD card image" do
   context "Partition table" do
     let(:stdout) { run("list-filesystems").stdout }
 
-    it "has two partitions" do
+    it "has three partitions" do
       partitions = stdout.split(/\r?\n/)
-      expect(partitions.size).to be 2
+      expect(partitions.size).to be 3
     end
 
     it "has a boot-partition with a vfat filesystem" do
@@ -20,6 +20,10 @@ describe "SD card image" do
 
     it "has a root-partition with a ext4 filesystem" do
       expect(stdout).to contain('sda2: ext4')
+    end
+
+    it "has a data-partition with a ext4 filesystem" do
+      expect(stdout).to contain('sda3: ext4')
     end
   end
 
@@ -40,6 +44,10 @@ describe "SD card image" do
 
     it "has a ext4 root entry" do
       expect(stdout).to match(/PARTUUID=[0-9a-z]{8}-02 \/ ext4/)
+    end
+
+    it "has a ext4 data entry" do
+      expect(stdout).to match(/PARTUUID=[0-9a-z]{8}-02 \/data ext4/)
     end
   end
 end

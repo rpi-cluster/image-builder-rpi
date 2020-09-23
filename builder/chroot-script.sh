@@ -167,6 +167,7 @@ echo "
 proc /proc proc defaults 0 0
 PARTUUID=${IMAGE_PARTUUID_PREFIX}-01 /boot vfat defaults 0 0
 PARTUUID=${IMAGE_PARTUUID_PREFIX}-02 / ext4 defaults,noatime 0 1
+PARTUUID=${IMAGE_PARTUUID_PREFIX}-03 /data ext4 defaults,noatime 0 0
 " > /etc/fstab
 
 # as the Pi does not have a hardware clock we need a fake one
@@ -262,6 +263,11 @@ echo "Installing rpi-serial-console script"
 wget -q https://raw.githubusercontent.com/lurch/rpi-serial-console/master/rpi-serial-console -O usr/local/bin/rpi-serial-console
 chmod +x usr/local/bin/rpi-serial-console
 
+# install watchdog
+apt-get install -y --force-yes watchdog
+systemctl start watchdog
+systemctl enable watchdog
+
 # fix eth0 interface name
 ln -s /dev/null /etc/systemd/network/99-default.link
 
@@ -273,3 +279,5 @@ rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 echo "HYPRIOT_DEVICE=\"$HYPRIOT_DEVICE\"" >> /etc/os-release
 echo "HYPRIOT_IMAGE_VERSION=\"$HYPRIOT_IMAGE_VERSION\"" >> /etc/os-release
 cp /etc/os-release /boot/os-release
+
+# enable readonly filesystem
