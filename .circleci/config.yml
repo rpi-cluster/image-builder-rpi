@@ -6,6 +6,11 @@ jobs:
       - checkout
 
       - run:
+          name: "Pull Submodules"
+          command: |
+            git submodule update --init
+
+      - run:
           name: Run Shellcheck
           command: |
             make shellcheck
@@ -44,7 +49,7 @@ jobs:
               if [[ $CIRCLE_TAG = *"rc"* ]]; then
                 pre=-prerelease
               fi
-              ./ghr $pre -u rpi-cluster $CIRCLE_TAG output/
+              ./ghr $pre -u rpi-cluster -r image-builder-rpi $CIRCLE_TAG output/
             fi
 
 workflows:
