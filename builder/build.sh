@@ -31,7 +31,7 @@ export HYPRIOT_IMAGE_VERSION
 
 # download the ready-made raw image for the RPi
 if [ ! -f "${BUILD_RESULT_PATH}/${RAW_IMAGE}.zip" ]; then
-  wget -q -O "${BUILD_RESULT_PATH}/${RAW_IMAGE}.zip" "https://github.com/hypriot/image-builder-raw/releases/download/${RAW_IMAGE_VERSION}/${RAW_IMAGE}.zip"
+  wget -q -O "${BUILD_RESULT_PATH}/${RAW_IMAGE}.zip" "https://github.com/rpi-cluster/image-builder-raw/releases/download/${RAW_IMAGE_VERSION}/${RAW_IMAGE}.zip"
 fi
 
 # verify checksum of the ready-made raw image
@@ -73,6 +73,10 @@ mount -t sysfs none ${BUILD_PATH}/sys
 
 # modify/add image files directly
 cp -R /builder/files/* ${BUILD_PATH}/
+
+# copy root-ro installer
+mkdir -p ${BUILD_PATH}/opt
+cp -R /builder/root-ro ${BUILD_PATH}/opt
 
 # make our build directory the current root
 # and install the Rasberry Pi firmware, kernel packages,
