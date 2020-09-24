@@ -47,7 +47,7 @@ describe "SD card image" do
     end
 
     it "has a ext4 data entry" do
-      expect(stdout).to match(/PARTUUID=[0-9a-z]{8}-02 \/data ext4/)
+      expect(stdout).to match(/PARTUUID=[0-9a-z]{8}-03 \/data ext4/)
     end
   end
 end

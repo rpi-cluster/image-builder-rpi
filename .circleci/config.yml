@@ -8,7 +8,7 @@ jobs:
       - run:
           name: "Pull Submodules"
           command: |
-            git submodule update --init
+            git submodule update --init --recursive
 
       - run:
           name: Run Shellcheck
