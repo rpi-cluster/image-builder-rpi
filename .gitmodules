@@ -1,3 +1,0 @@
-[submodule "builder/root-ro"]
-	path = builder/root-ro
-	url = git@github.com:rpi-cluster/root-ro.git

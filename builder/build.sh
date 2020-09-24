@@ -74,10 +74,6 @@ mount -t sysfs none ${BUILD_PATH}/sys
 # modify/add image files directly
 cp -R /builder/files/* ${BUILD_PATH}/
 
-# copy root-ro installer
-mkdir -p ${BUILD_PATH}/opt
-cp -R /builder/root-ro ${BUILD_PATH}/opt
-
 # make our build directory the current root
 # and install the Rasberry Pi firmware, kernel packages,
 # docker tools and some customizations
