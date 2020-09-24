@@ -280,6 +280,6 @@ echo "HYPRIOT_DEVICE=\"$HYPRIOT_DEVICE\"" >> /etc/os-release
 echo "HYPRIOT_IMAGE_VERSION=\"$HYPRIOT_IMAGE_VERSION\"" >> /etc/os-release
 cp /etc/os-release /boot/os-release
 
-# enable readonly filesystem and remove installer
-/opt/root-ro/install.sh
-rm -rfv /opt/root-ro
+# move docker files to data partition
+mkdir -p /data/var/lib/docker
+ln -sfv /data/var/lib/docker /var/lib/docker
