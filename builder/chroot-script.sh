@@ -282,5 +282,4 @@ cp /etc/os-release /boot/os-release
 
 # move docker files to data partition
 mkdir -p /data/var/lib/docker
-echo copied >> /data/var/lib/docker/copied.txt
 ln -sfv /data/var/lib/docker /var/lib/docker
