@@ -263,12 +263,9 @@ echo "Installing rpi-serial-console script"
 wget -q https://raw.githubusercontent.com/lurch/rpi-serial-console/master/rpi-serial-console -O usr/local/bin/rpi-serial-console
 chmod +x usr/local/bin/rpi-serial-console
 
-# install watchdog
-apt-get install -y --force-yes watchdog
-systemctl start watchdog
+# install watchdog and guest utils
+apt-get install -y --force-yes watchdog cloud-guest-utils 
 systemctl enable watchdog
-# install cloud utils
-apt-get install -y --force-yes cloud-guest-utils 
 
 # fix eth0 interface name
 ln -s /dev/null /etc/systemd/network/99-default.link
