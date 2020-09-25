@@ -268,7 +268,7 @@ apt-get install -y --force-yes watchdog
 systemctl start watchdog
 systemctl enable watchdog
 # install cloud utils
-apt install cloud-guest-utils -y --force-yes
+apt-get install cloud-guest-utils -y --force-yes
 
 # fix eth0 interface name
 ln -s /dev/null /etc/systemd/network/99-default.link
