@@ -279,6 +279,10 @@ echo "HYPRIOT_DEVICE=\"$HYPRIOT_DEVICE\"" >> /etc/os-release
 echo "HYPRIOT_IMAGE_VERSION=\"$HYPRIOT_IMAGE_VERSION\"" >> /etc/os-release
 cp /etc/os-release /boot/os-release
 
+#
+# adjustements for readonly/overlay root
+#
+
 # move docker files to data partition
 mkdir -p /data/var/lib/docker
 ln -sfv /data/var/lib/docker /var/lib/docker
@@ -290,3 +294,13 @@ mv /home /data
 ln -sfv /data/home /home
 mv /root /data
 ln -sfv /data/root /root
+
+# move hwclock data
+mkdir -p /data/etc
+mv /etc/fake-hwclock.data /data/etc 
+ln -sfv /data/etc/fake-hwclock.data /etc/fake-hwclock.data 
+
+# move ntp folder
+mkdir -p /data/var/lib
+mv /var/lib/ntp /data/var/lib
+ln -sfv /data/var/lib/ntp /var/lib/ntp
