@@ -295,11 +295,6 @@ ln -sfv /data/home /home
 mv /root /data
 ln -sfv /data/root /root
 
-# move hwclock data
-mkdir -p /data/etc
-mv /etc/fake-hwclock.data /data/etc 
-ln -sfv /data/etc/fake-hwclock.data /etc/fake-hwclock.data 
-
 # move ntp folder
 mkdir -p /data/var/lib
 mv /var/lib/ntp /data/var/lib
