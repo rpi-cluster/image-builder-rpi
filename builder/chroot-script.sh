@@ -282,6 +282,8 @@ cp /etc/os-release /boot/os-release
 # move docker files to data partition
 mkdir -p /data/var/lib/docker
 ln -sfv /data/var/lib/docker /var/lib/docker
+mkdir -p /data/etc/docker
+ln -sfv /data/etc/docker /etc/docker
 
 # move users and root folder to data partition
 mv /home /data
