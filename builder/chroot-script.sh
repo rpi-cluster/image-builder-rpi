@@ -263,8 +263,8 @@ echo "Installing rpi-serial-console script"
 wget -q https://raw.githubusercontent.com/lurch/rpi-serial-console/master/rpi-serial-console -O usr/local/bin/rpi-serial-console
 chmod +x usr/local/bin/rpi-serial-console
 
-# install watchdog and vim
-apt-get install -y --force-yes watchdog vim 
+# install watchdog, vim and python3 venv
+apt-get install -y --force-yes watchdog vim python3-venv
 systemctl enable watchdog
 
 # fix eth0 interface name
