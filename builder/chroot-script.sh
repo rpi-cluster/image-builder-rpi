@@ -264,7 +264,7 @@ wget -q https://raw.githubusercontent.com/lurch/rpi-serial-console/master/rpi-se
 chmod +x usr/local/bin/rpi-serial-console
 
 # install watchdog, vim and python3 venv
-apt-get install -y --force-yes watchdog vim python3-venv
+apt-get install -y --force-yes watchdog vim python3-venv git-lfs
 systemctl enable watchdog
 
 # fix eth0 interface name
